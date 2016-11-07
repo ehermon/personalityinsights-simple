@@ -40,10 +40,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/api/profile', function(req, res, next) {
-  var parameters = {
-    extend(req.body, { acceptLanguage : i18n.lng() });,
-    consumption_preferences: true //adding consumption preferences to request 
-  }
+  var parameters = extend(req.body, { acceptLanguage : i18n.lng() });
+  
   personalityInsights.profile(parameters, function(err, profile) {
     if (err)
       return next(err);
