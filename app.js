@@ -41,8 +41,13 @@ app.get('/', function(req, res) {
 
 app.post('/api/profile', function(req, res, next) {
   var parameters = extend(req.body, { acceptLanguage : i18n.lng(), consumption_preferences : true });
+  var overrrideParams = {
+    text: 'In the past year, I have traveled not only across our own land but to other lands-to the North and the South, and across the seas. And I have found--as I am sure you have, in your travels--that people everywhere, in spite of occasional disappointments, look to us--not to our wealth or power, but to the splendor of our ideals. For our Nation is commissioned by history to be either an observer of freedom\'s failure or the cause of its success. Our overriding obligation in the months ahead is to fulfill the world\'s hopes by fulfilling our own faith.',
+    consumption_preferences: true
+  };
+
   
-  personalityInsights.profile(parameters, function(err, profile) {
+  personalityInsights.profile(overrideParams, function(err, profile) {
     if (err)
       return next(err);
     else
