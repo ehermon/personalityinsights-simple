@@ -19,6 +19,7 @@
 var express    = require('express'),
   app          = express(),
   watson       = require('watson-developer-cloud'),
+  PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3'),
   extend       = require('util')._extend,
   i18n         = require('i18next');
 
@@ -29,8 +30,8 @@ require('./config/i18n')(app);
 require('./config/express')(app);
 
 // Create the service wrapper
-var personalityInsights = watson.personality_insights({
-  version: 'v3',
+var personalityInsights = new PersonalityInsightsV3({
+  //version: 'v3',
   version_date: '2016-10-19',
   username: '<username>',
   password: '<password>'
